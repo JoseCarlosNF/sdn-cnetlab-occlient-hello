@@ -2,7 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.ssh.extra_args = ["-t", "tmux"]
+  config.ssh.extra_args = ["-t", "sudo", "-i", "tmux"]
+
   config.vm.synced_folder ".", "/vagrant", disabled: false
   config.vm.box = "ubuntu/focal64"
   config.vm.box_check_update = false
