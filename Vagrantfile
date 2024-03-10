@@ -23,6 +23,7 @@ Vagrant.configure("2") do |config|
     apt-get install -y fish tmux git python3-pip xterm
     curl -fSsl https://get.docker.com | sh
     usermod -aG docker vagrant
+    cd /root
     git clone https://git.rnp.br/cnar/sdn-multicamada/emulacao/emulador-optico.git
     git clone https://github.com/lbors/sdnm-clab.git
     cd emulador-optico
