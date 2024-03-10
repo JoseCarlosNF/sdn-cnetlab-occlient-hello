@@ -65,7 +65,7 @@ passos:
 
 #### Executando o ONOS
 
-```bash
+```bash Executar container do ONOS
 docker run --name oran-onos --rm --network host -d muriloavlis/oran-onos:v2.0.0
 ```
 
@@ -99,10 +99,14 @@ base (`Ubuntu 20.4 LTS`) e instalação das dependências e clone dos repositór
 
 ##### Comandos básicos do vagrant
 
-Os comandos a seguir ligam, desligam e destroem a máquina virtual.
+Os comandos a seguir ligam, acessam, desligam e destroem a máquina virtual.
 
 ```bash Ligar VM
 vagrant up
+```
+
+```bash Acessar máquina vis SSH
+vagrant ssh
 ```
 
 ```bash Desligar VM
