@@ -29,3 +29,7 @@ onos:app activate \
   org.onosproject.openflow \
   org.onosproject.fwd
 ```
+
+Agora que o OpenFlow está habilitado no controlador, podemos seguir com o
+cenário de [provisionamento dos switches e
+dispositivos](./02-switches-provisioning.md).
