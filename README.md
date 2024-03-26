@@ -65,6 +65,12 @@ passos:
 
 #### Executando o ONOS
 
+Existem pelo menos duas formas de executar os testes propostos. Você pode subir
+uma instância do ONOS controller manualmente, ativando as aplicações necessárias
+para o seu teste (exige mais conhecimento sobre os componentes). Ou utilizando
+a máquina virtual declarada com o vagrant (mais fácil, um ambiente built-in com
+tudo que você precisa).
+
 ```bash Executar container do ONOS
 docker run --name oran-onos --rm --network host -d muriloavlis/oran-onos:v2.0.0
 ```
