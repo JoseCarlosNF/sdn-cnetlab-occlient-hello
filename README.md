@@ -59,49 +59,27 @@ acessaremos a máquina para executar os scripts de emulação dos dispositivos.
 
 ### :test_tube: Executando o ambiente
 
-Para ter um ambiente minimamente viável, com um controlador `onos` e alguns
-dispositivos sendo emulados pelo `cnetlab`. Você pode executar os seguintes
-passos:
+Para ter um ambiente minimamente viável, você precisa de um controlador `onos` e
+alguns dispositivos sendo emulados pelo `cnetlab`.
 
-#### Executando o ONOS
-
-Existem pelo menos duas formas de executar os testes propostos. Você pode subir
+Existem pelo menos duas formas de provisionar esses componentes. Você pode subir
 uma instância do ONOS controller manualmente, ativando as aplicações necessárias
-para o seu teste (exige mais conhecimento sobre os componentes). Ou utilizando
-a máquina virtual declarada com o vagrant (mais fácil, um ambiente built-in com
-tudo que você precisa).
+para o seu laboratório (exige mais conhecimento sobre os componentes). Ou
+utilizando os cenários já descritos no CNETLAB. Nesse caso, o controlador será
+provisionado pelo próprio CNETLAB, junto com os demais dispositivos (exige menos
+conhecimento sobre os componentes).
 
-```bash Executar container do ONOS
-docker run --name oran-onos --rm --network host -d muriloavlis/oran-onos:v2.0.0
-```
+> [!TIP]
+> **Recomendo que utilize a VM**, inclusive para provisionar o ONOS manualmente.
+> Por ser um ambiente isolado da máquina local, tende a ter um comportamento
+> de mais fácil replicação, uma vez que o estado base pode ser retomado a
+> qualquer momento, destruindo e provisionando o ambiente novamente.
 
-##### Acessando o ONOS via SSH (Opcional)
-
-Essa é uma dica para os amantes de terminal e CLIs, como eu. Devemos lembrar que
-a abordagem de software pressupõe uma arquitetura *API First*. Logo, a maioria
-das ações que podem ser tomadas via interface, também poderão ser feitas via
-CLI, algo mais prático para algumas pessoas.
-
-Para isso, será necessário executar os passos a seguir, para instalar e acessar
-o ssh.
-
-```bash Habilitando o SSH
-docker exec -it oran-onos apt update
-docker exec -it oran-onos apt install -y ssh
-```
-
-```bash Acessando via SSH
-docker exec -it oran-onos ssh -p 8101 onos@localhost
-# A senha é `rocks`
-```
-
-#### CNETLAB
-
-Operando **sob uma máquina virtual**, será o componente responsável por emular
-os dispositivos de rede.
+#### Provisionamento da Máquina Virtual
 
 O processo de provisionamento da máquina virtual consiste na obtenção da imagem
 base (`Ubuntu 20.4 LTS`) e instalação das dependências e clone dos repositórios.
+Todos esses passos são abstraídos pela utilização do vagrant.
 
 ##### Comandos básicos do vagrant
 
@@ -122,6 +100,39 @@ vagrant down
 ```bash Destruir VM
 vagrant destroy --force
 ```
+
+#### Executando o ONOS
+
+Utilizado quando estamos subindo o controlador manualmente.
+
+```bash Executar container do ONOS
+docker run --name oran-onos --rm --network host -d muriloavlis/oran-onos:v2.0.0
+```
+
+##### Acessando o ONOS via SSH (Opcional)
+
+Essa é uma dica para os amantes de terminal e CLIs, como eu. Devemos lembrar que
+a abordagem de software pressupõe uma arquitetura *API First*. Logo, a maioria
+das ações que podem ser tomadas através de uma interface mais programática, como
+uma CLI, ou mesmo o `occlient`.
+
+Como estamos em um ambiente mais controlado, podemos acessar o controlador
+diretamente, via ssh. Para instalar e acessar o ssh no container do controlador,
+basta executar os comandos a seguir:
+
+```bash Habilitando o SSH
+docker exec -it oran-onos apt update
+docker exec -it oran-onos apt install -y ssh
+```
+
+```bash Acessando via SSH
+docker exec -it oran-onos ssh -p 8101 onos@localhost
+# A senha é `rocks`
+```
+
+#### CNETLAB
+
+Será o componente responsável por emular os dispositivos de rede.
 
 *[Repositório do CNETLAB][cnetlab]*
 
