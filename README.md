@@ -109,6 +109,14 @@ Utilizado quando estamos subindo o controlador manualmente.
 docker run --name oran-onos --rm --network host -d muriloavlis/oran-onos:v2.0.0
 ```
 
+Através do comando a seguir você pode obter os logs gerados pelo controlador.
+Não deve ser uma preocupação no início, mas vou deixar na página inicial pra
+facilitar uma consulta posterior.
+
+```bash Obtendo os logs do controlador
+docker logs -f oran-onos
+```
+
 ##### Acessando o ONOS via SSH (Opcional)
 
 Essa é uma dica para os amantes de terminal e CLIs, como eu. Devemos lembrar que
