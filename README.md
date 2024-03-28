@@ -49,13 +49,12 @@ operacional, e a própria manipulação das funções de rede acontecem em níve
 kernel, para evitar problemas com o ambiente local, preferi usar um ambiente
 mais controlado e que pudesse ser replicado com facilidade.
 
-- **[Docker][docker]**: será instalado tanto na VM quanto na máquina local.
-Localmente, deverá rodar o controlador, e na máquina virtual deverá rodar os
-dispositivos de rede, emulados pelo `cnetlab`.
-
 - **[Vagrant][vagrant]**: será a ferramenta que subirá a VM no VirtualBox,
 através dela toda a configuração necessária para a VM será abstraída, e apenas
 acessaremos a máquina para executar os scripts de emulação dos dispositivos.
+
+- **[Docker][docker]**: instalado na VM, será responsável por rodar o
+controlador e os dispositivos emulados pelo `cnetlab`.
 
 ### :test_tube: Executando o ambiente
 
