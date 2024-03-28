@@ -55,6 +55,9 @@ echo '------------------------------- Install adsf -----------------------------
     /root/.asdf/bin/asdf install golang 1.21.0
     /root/.asdf/bin/asdf global golang 1.21.0
 
+    cp -r ~/.asdf/ /home/vagrant/
+    chown -R vagrant:vagrant /home/vagrant/.asdf/
+
 echo '------------------------------ Install docker --------------------------------'
     apt list --installed | grep docker || curl -fSsl https://get.docker.com | sh
 
