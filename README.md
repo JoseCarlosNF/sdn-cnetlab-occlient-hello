@@ -137,6 +137,22 @@ docker exec -it oran-onos ssh -p 8101 onos@localhost
 # A senha é `rocks`
 ```
 
+**Bônus**: é bem possível que durante os laboratórios alguns containers, dos
+dispositivos fiquem pelo meio do caminho. Para ajudar com a remoção deles, você
+pode usar o comando a seguir, ele basicamente remove todos os container cujo
+nome não é `oran-onos`:
+
+```bash Remoção de todos os outros containers que não sejam o nosso controlador
+docker rm -f (docker ps -a --format json | jq -r '. | select(.Names|test("oran-onos")|not) | .ID')
+```
+
+> [!WARNING]
+> Na máquina virtual estamos **usando como shell o `fish`**, mais amigável que o
+> tradicional bash. Entretanto tem algumas peculiaridades com a sintaxe.
+>
+> **Esse comando não funcionará no `bash`**, você precisa adicionar o `$` antes
+> do `(`. Deixando-o assim `$()`.
+
 #### CNETLAB
 
 Será o componente responsável por emular os dispositivos de rede.
