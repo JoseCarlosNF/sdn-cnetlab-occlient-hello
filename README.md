@@ -13,10 +13,6 @@ dos meus e gosta de aprender na prática. Mas ressalto, existem muito conceitos 
 fundamentos que facilitam o entendimento sobre o assunto, então não espere
 entender tudo de primeira, a constância é melhor do que os grandes saltos.
 
-- [ONOS](#onos)
-- [OpenRAN](#openran)
-- [OCCLIENT](#occlient)
-
 ### ONOS
 
 Controlador SDN, atualmente o mais aceito quando a abordagem é open-source.
@@ -26,10 +22,20 @@ Controlador SDN, atualmente o mais aceito quando a abordagem é open-source.
 Abordagem aberta para redes via rádio. Alguns exemplos são as redes de telefonia
 celular.
 
+> [!NOTE]
+> No Brasil temos o programa [`OpenRAN@Brasil`](https://openranbrasil.org.br/),
+> incentivando o desenvolvimento e a inovação em componentes da arquitetura
+> OpenRAN.
+
+
 ### OCCLIENT
 
 CLI proposta para manutençã e configuração de ambientes multidomínio,
 controlados pelo ONOS.
+
+### CNETLAB
+
+Será o componente responsável por emular os dispositivos de rede. *[Repositório do CNETLAB][cnetlab]*.
 
 ## :rocket: Rodando
 
@@ -137,10 +143,17 @@ docker exec -it oran-onos ssh -p 8101 onos@localhost
 # A senha é `rocks`
 ```
 
-**Bônus**: é bem possível que durante os laboratórios alguns containers, dos
-dispositivos fiquem pelo meio do caminho. Para ajudar com a remoção deles, você
-pode usar o comando a seguir, ele basicamente remove todos os container cujo
-nome não é `oran-onos`:
+
+## :warning: Problemas comuns
+
+É praticamente certo que o cnetlab deixará algum rastro quando o cenário que
+você está testando não possa ser executado. Nesses casos tente executar os
+passos a seguir, deletando todos os containers e redes criadas.
+
+### Limpando os containers
+
+Remove todos os outros containers que não sejam o nosso controlador, cujo nome
+do container é `oran-onos`.
 
 ```bash Remoção de todos os outros containers que não sejam o nosso controlador
 docker rm -f (docker ps -a --format json | jq -r '. | select(.Names|test("oran-onos")|not) | .ID')
@@ -153,11 +166,15 @@ docker rm -f (docker ps -a --format json | jq -r '. | select(.Names|test("oran-o
 > **Esse comando não funcionará no `bash`**, você precisa adicionar o `$` antes
 > do `(`. Deixando-o assim `$()`.
 
-#### CNETLAB
+### Limpando as redes
 
-Será o componente responsável por emular os dispositivos de rede.
+Dentro da máquina virtual, as redes virtuais são criadas apenas pelo CNETLAB.
+Então não precisamos nos preocupar em simplesmente deletar todas.
 
-*[Repositório do CNETLAB][cnetlab]*
+```bash Deleta todas as redes virtuais
+ip --all net delete
+```
+
 
 <!-- Links -->
 [virtualbox]: https://www.virtualbox.org/
