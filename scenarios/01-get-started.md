@@ -52,7 +52,6 @@ qualquer lugar da máquina virtual.
 curl -fSsl 'https://gist.githubusercontent.com/JoseCarlosNF/702c645103fc9b558664dbaa5c48aec3/raw/ovs_only_topology.py' | python3
 ```
 
-
 ## Acessando a interface do ONOS
 
 Se tudo correu bem, você deve conseguir acessar a interface do ONOS no endereço
