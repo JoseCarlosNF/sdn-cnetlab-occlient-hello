@@ -105,7 +105,7 @@ vagrant destroy --force
 Utilizado quando estamos subindo o controlador manualmente.
 
 ```bash Executar container do ONOS
-docker run --name oran-onos --rm --network host -d muriloavlis/oran-onos:v2.0.0
+docker run --name oran-onos --network host -d muriloavlis/oran-onos:v2.0.0
 ```
 
 Através do comando a seguir você pode obter os logs gerados pelo controlador.
