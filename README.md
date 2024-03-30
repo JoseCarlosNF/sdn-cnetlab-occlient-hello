@@ -143,7 +143,6 @@ docker exec -it oran-onos ssh -p 8101 onos@localhost
 # A senha é `rocks`
 ```
 
-
 ## :warning: Problemas comuns
 
 É praticamente certo que o cnetlab deixará algum rastro quando o cenário que
@@ -174,7 +173,6 @@ Então não precisamos nos preocupar em simplesmente deletar todas.
 ```bash Deleta todas as redes virtuais
 ip --all net delete
 ```
-
 
 <!-- Links -->
 [virtualbox]: https://www.virtualbox.org/
